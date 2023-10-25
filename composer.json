@@ -51,7 +51,6 @@
         "friendsofphp/php-cs-fixer": "*",
         "phpunit/phpunit": "*",
         "roave/security-advisories": "dev-latest",
-        "spaghetti/php-cs-fixer-config": ">=1.1",
         "symfony/framework-bundle": "*",
         "symfony/phpunit-bridge": "*",
         "vairogs/core": "self.version"
