@@ -3,7 +3,6 @@
 namespace Vairogs\Functions;
 
 use InvalidArgumentException;
-use JetBrains\PhpStorm\Pure;
 use Vairogs\Functions\Constants\Enum\StartsEnds;
 
 use function array_diff;
@@ -58,7 +57,6 @@ final class Iteration
         $array = array_map(callback: 'unserialize', array: array_unique(array: array_map(callback: 'serialize', array: $array)));
     }
 
-    #[Pure]
     public function unique(array $input, bool $keepKeys = false): array
     {
         if ($keepKeys) {
@@ -72,7 +70,6 @@ final class Iteration
         return array_keys(array: array_flip(array: $input));
     }
 
-    #[Pure]
     public function isMultiDimensional(array $keys = []): bool
     {
         foreach ($keys as $key) {

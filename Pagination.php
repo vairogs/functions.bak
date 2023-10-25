@@ -3,7 +3,6 @@
 namespace Vairogs\Functions;
 
 use InvalidArgumentException;
-use JetBrains\PhpStorm\Pure;
 
 use function ceil;
 use function floor;
@@ -46,7 +45,6 @@ final class Pagination
         return $this->getDataWithTwoOmitted();
     }
 
-    #[Pure]
     private function hasSingleOmitted(): bool
     {
         return $this->hasSingleOmittedNearLast() || $this->hasSingleOmittedNearStart();
@@ -78,25 +76,21 @@ final class Pagination
         }
     }
 
-    #[Pure]
     private function hasSingleOmittedNearLast(): bool
     {
         return $this->current <= $this->getSingleBreakpoint();
     }
 
-    #[Pure]
     private function getSingleBreakpoint(): int
     {
         return (int) floor(num: $this->visible / 2) + 1;
     }
 
-    #[Pure]
     private function hasSingleOmittedNearStart(): bool
     {
         return $this->current >= $this->total - $this->getSingleBreakpoint() + 1;
     }
 
-    #[Pure]
     private function getDataWithSingleOmitted(): array
     {
         $rest = $this->visible - ($this->total - $this->current);

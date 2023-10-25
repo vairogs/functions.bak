@@ -8,9 +8,7 @@ use function is_object;
 
 class FunctionHandler extends AbstractHandler
 {
-    public function __construct(private readonly string $function, private readonly ?object $instance = null)
-    {
-    }
+    public function __construct(private readonly string $function, private readonly ?object $instance = null) {}
 
     public function handle(...$arguments): mixed
     {

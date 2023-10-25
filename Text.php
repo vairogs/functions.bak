@@ -2,7 +2,6 @@
 
 namespace Vairogs\Functions;
 
-use JetBrains\PhpStorm\Pure;
 use Vairogs\Functions\Constants\Symbol;
 
 use function array_key_exists;
@@ -73,7 +72,6 @@ final class Text
         return rtrim(string: $matches[0]) . $append;
     }
 
-    #[Pure]
     public function contains(string $haystack, string $needle): bool
     {
         return false !== strpbrk(string: $haystack, characters: $needle);

@@ -5,7 +5,6 @@ namespace Vairogs\Functions;
 use BadFunctionCallException;
 use Exception;
 use InvalidArgumentException;
-use JetBrains\PhpStorm\Pure;
 use ReflectionClass;
 use ReflectionClassConstant;
 use ReflectionObject;
@@ -29,7 +28,6 @@ use function ucfirst;
 
 final class Php
 {
-    #[Pure]
     public function boolval(mixed $value): bool
     {
         if (is_bool(value: $value)) {

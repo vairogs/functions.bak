@@ -3,7 +3,6 @@
 namespace Vairogs\Functions;
 
 use CURLFile;
-use JetBrains\PhpStorm\Pure;
 use ReflectionException;
 use Symfony\Component\HttpFoundation\HeaderBag;
 use Symfony\Component\HttpFoundation\Request;
@@ -125,7 +124,6 @@ final class Uri
         return $string;
     }
 
-    #[Pure]
     public function isUrl(string $url): bool
     {
         /* @noinspection BypassedUrlValidationInspection */

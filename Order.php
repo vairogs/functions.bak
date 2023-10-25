@@ -4,7 +4,6 @@ namespace Vairogs\Functions;
 
 use Closure;
 use InvalidArgumentException;
-use JetBrains\PhpStorm\Pure;
 
 use function array_key_exists;
 use function count;
@@ -36,7 +35,6 @@ final class Order
         return $data;
     }
 
-    #[Pure]
     public function isSortable(mixed $item, int|string $field): bool
     {
         if (is_array(value: $item)) {

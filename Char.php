@@ -2,8 +2,6 @@
 
 namespace Vairogs\Functions;
 
-use JetBrains\PhpStorm\Pure;
-
 use function filter_var;
 use function lcfirst;
 use function preg_replace;
@@ -42,7 +40,6 @@ final class Char
         return (string) preg_replace(pattern: '#\s+#', replacement: '', subject: ucfirst(string: ucwords(string: strtolower(string: str_replace(search: '_', replace: ' ', subject: $string)))));
     }
 
-    #[Pure]
     public function sanitizeFloat(string $string): float
     {
         return (float) filter_var(value: $string, filter: FILTER_SANITIZE_NUMBER_FLOAT, options: FILTER_FLAG_ALLOW_FRACTION);

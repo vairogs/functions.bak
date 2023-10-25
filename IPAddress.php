@@ -2,9 +2,7 @@
 
 namespace Vairogs\Functions;
 
-use JetBrains\PhpStorm\ArrayShape;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\PropertyInfo\Type;
 use Vairogs\Functions\Constants\Http;
 
 use function array_map;
@@ -35,10 +33,6 @@ final class IPAddress
         return $this->getRemoteIp(request: $request, trust: $trust);
     }
 
-    #[ArrayShape([
-        Type::BUILTIN_TYPE_STRING,
-        Type::BUILTIN_TYPE_STRING,
-    ])]
     public function getCIDRRange(string $cidr, bool $int = true): array
     {
         if (!$this->isCIDR(cidr: $cidr)) {
