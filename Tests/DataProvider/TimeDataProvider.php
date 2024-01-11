@@ -4,7 +4,7 @@ namespace Vairogs\Functions\Tests\DataProvider;
 
 class TimeDataProvider
 {
-    public static function dataProviderFormat(): array
+    public static function providerFormat(): array
     {
         return [
             [45, '45 seconds', false, ],

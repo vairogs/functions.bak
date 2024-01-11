@@ -4,7 +4,7 @@ namespace Vairogs\Functions\Tests\DataProvider;
 
 class CharDataProvider
 {
-    public static function dataProviderSanitizeFloat(): array
+    public static function providerSanitizeFloat(): array
     {
         return [
             ['0.56', 0.56, ],
@@ -14,7 +14,7 @@ class CharDataProvider
         ];
     }
 
-    public static function dataProviderToSnakeCase(): array
+    public static function providerToSnakeCase(): array
     {
         return [
             ['VairogsHelper', false, 'vairogshelper', ],
@@ -22,7 +22,7 @@ class CharDataProvider
         ];
     }
 
-    public static function dataProviderFromCamelCase(): array
+    public static function providerFromCamelCase(): array
     {
         return [
             ['VairogsHelper', '_', 'vairogs_helper', ],
@@ -30,14 +30,14 @@ class CharDataProvider
         ];
     }
 
-    public static function dataProviderToCamelCaseLCFirst(): array
+    public static function providerToCamelCaseLCFirst(): array
     {
         return [
             ['vairogs_helper', 'vairogsHelper', ],
         ];
     }
 
-    public static function dataProviderToCamelCaseUCFirst(): array
+    public static function providerToCamelCaseUCFirst(): array
     {
         return [
             ['vairogshelper', 'Vairogshelper', ],

@@ -37,7 +37,7 @@
         }
     ],
     "require": {
-        "php": ">=8.1.0",
+        "php": ">=8.2.0",
         "ext-curl": "*",
         "composer-runtime-api": ">=2.0.0",
         "symfony/http-foundation": ">=6.1",
@@ -49,11 +49,10 @@
         "ext-random": "*",
         "ext-gmp": "*",
         "friendsofphp/php-cs-fixer": "*",
-        "phpunit/phpunit": "*",
+        "phpunit/phpunit": ">=10.0",
         "roave/security-advisories": "dev-latest",
         "symfony/framework-bundle": "*",
-        "symfony/phpunit-bridge": "*",
-        "vairogs/core": "self.version"
+        "vairogs/core": "dev-master"
     },
     "suggest": {
         "ext-random": "*",
@@ -66,7 +65,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Vairogs\\Functions\\Tests\\": "Tests/"
+            "Vairogs\\Functions\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",

@@ -2,18 +2,18 @@
 
 namespace Vairogs\Functions\Tests;
 
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use UnexpectedValueException;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\File;
 use Vairogs\Functions\Identification;
+use Vairogs\Functions\Tests\DataProvider\FileDataProvider;
 
 use const DIRECTORY_SEPARATOR;
 
 class FileTest extends VairogsTestCase
 {
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\FileDataProvider::dataProviderHumanFileSize
-     */
+    #[DataProviderExternal(FileDataProvider::class, 'providerHumanFileSize')]
     public function testHumanFileSize(int $bytes, int $decimals, string $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new File())->humanFileSize(bytes: $bytes, decimals: $decimals));

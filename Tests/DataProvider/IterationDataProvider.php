@@ -8,7 +8,7 @@ use const PHP_INT_MAX;
 
 class IterationDataProvider
 {
-    public static function dataProviderIsEmpty(): array
+    public static function providerIsEmpty(): array
     {
         return [
             [0, true, ],
@@ -19,7 +19,7 @@ class IterationDataProvider
         ];
     }
 
-    public static function dataProviderMakeMultiDimensional(): array
+    public static function providerMakeMultiDimensional(): array
     {
         return [
             [[], [], ],
@@ -28,7 +28,7 @@ class IterationDataProvider
         ];
     }
 
-    public static function dataProviderUniqueMap(): array
+    public static function providerUniqueMap(): array
     {
         return [
             [['vairogs', 'test', 'vairogs', ], ['vairogs', 'test', ], ],
@@ -37,7 +37,7 @@ class IterationDataProvider
         ];
     }
 
-    public static function dataProviderUnique(): array
+    public static function providerUnique(): array
     {
         return [
             [['vairogs', 'test', 'vairogs', ], ['vairogs', 'test', ], true, ],
@@ -46,7 +46,7 @@ class IterationDataProvider
         ];
     }
 
-    public static function dataProviderArrayIntersectKeyRecursive(): array
+    public static function providerArrayIntersectKeyRecursive(): array
     {
         return [
             [[1 => 'test', 2 => 'data', ], ['test', 'test2', ], [1 => 'test', ], ],
@@ -54,7 +54,7 @@ class IterationDataProvider
         ];
     }
 
-    public static function dataProviderArrayFlipRecursive(): array
+    public static function providerArrayFlipRecursive(): array
     {
         return [
             [[1 => 'a', 2 => 'b', 'c' => 3, ], ['a' => 1, 'b' => 2, 3 => 'c', ], ],
@@ -62,7 +62,7 @@ class IterationDataProvider
         ];
     }
 
-    public static function dataProviderMakeOneDimension(): array
+    public static function providerMakeOneDimension(): array
     {
         $array = [
             'vairogs' => [

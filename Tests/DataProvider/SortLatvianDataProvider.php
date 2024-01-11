@@ -11,7 +11,7 @@ use Vairogs\Functions\Tests\Assets\Model\Entity6;
 
 class SortLatvianDataProvider
 {
-    public static function dataProviderSortLatvian(): array
+    public static function providerSortLatvian(): array
     {
         $entity1 = (new Entity1())->setName(name: $n1 = 'zāle');
         $entity1::setTitle(title: $n1);

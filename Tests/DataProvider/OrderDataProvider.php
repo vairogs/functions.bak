@@ -4,7 +4,7 @@ namespace Vairogs\Functions\Tests\DataProvider;
 
 class OrderDataProvider
 {
-    public static function dataProviderSort(): array
+    public static function providerSort(): array
     {
         return [
             [[['test' => 1, 'data' => 2, ], ['test' => 3, 'data' => 4, ], ['test' => 2, 'data' => 5, ], ], 'test', 'ASC', [['test' => 1, 'data' => 2, ], ['test' => 2, 'data' => 5, ], ['test' => 3, 'data' => 4, ], ], ],
@@ -14,7 +14,7 @@ class OrderDataProvider
         ];
     }
 
-    public static function dataProviderSortException(): array
+    public static function providerSortException(): array
     {
         return [
             [[['test' => 1, 'data' => 2, ], ['test' => 3, 'data' => 4, ], ['test' => 2, 'data' => 5, ], ], 'value', 'DESC', [['test' => 3, 'data' => 4, ], ['test' => 2, 'data' => 5, ], ['test' => 1, 'data' => 2, ], ], ],

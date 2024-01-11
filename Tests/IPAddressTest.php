@@ -2,25 +2,23 @@
 
 namespace Vairogs\Functions\Tests;
 
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Symfony\Component\HttpFoundation\Request;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\Constants\Definition;
 use Vairogs\Functions\Constants\Http;
 use Vairogs\Functions\IPAddress;
+use Vairogs\Functions\Tests\DataProvider\IPAddressDataProvider;
 
 class IPAddressTest extends VairogsTestCase
 {
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IPAddressDataProvider::dataProviderGetCIDRRange
-     */
+    #[DataProviderExternal(IPAddressDataProvider::class, 'providerGetCIDRRange')]
     public function testGetCIDRRange(string $cidr, bool $int, ?array $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new IPAddress())->getCIDRRange(cidr: $cidr, int: $int));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IPAddressDataProvider::dataProviderGetRemoteIpCF
-     */
+    #[DataProviderExternal(IPAddressDataProvider::class, 'providerGetRemoteIpCF')]
     public function testGetRemoteIpCF(?string $ipHeader, ?string $ipCF, bool $trust, string $expected): void
     {
         $request = Request::create(uri: Definition::IDENT);

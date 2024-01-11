@@ -3,44 +3,39 @@
 namespace Vairogs\Functions\Tests;
 
 use Exception;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\Constants\Definition;
+use Vairogs\Functions\Tests\DataProvider\UriDataProvider;
 use Vairogs\Functions\Uri;
 
 class UriTest extends VairogsTestCase
 {
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\UriDataProvider::dataProviderArrayFromQueryString
-     */
+    #[DataProviderExternal(UriDataProvider::class, 'providerArrayFromQueryString')]
     public function testArrayFromQueryString(string $query, array $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Uri())->arrayFromQueryString(query: $query));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\UriDataProvider::dataProviderGetSchema
-     */
+    #[DataProviderExternal(UriDataProvider::class, 'providerGetSchema')]
     public function testGetSchema(string $url, string $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Uri())->getSchema(request: Request::create(uri: $url)));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\UriDataProvider::dataUrlEncode
-     */
+    #[DataProviderExternal(UriDataProvider::class, 'dataUrlEncode')]
     public function testUrlEncode(string $url): void
     {
         $this->assertEquals(expected: $url, actual: (new Uri())->urlEncode(url: $url));
     }
 
     /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\UriDataProvider::dataProviderRouteExists
-     *
      * @throws Exception
      */
+    #[DataProviderExternal(UriDataProvider::class, 'providerRouteExists')]
     public function testRouteExists(string $route, bool $expected): void
     {
         $this->assertInstanceOf(expected: RouterInterface::class, actual: $router = $this->container->get(id: 'router', invalidBehavior: ContainerInterface::NULL_ON_INVALID_REFERENCE));
@@ -48,17 +43,13 @@ class UriTest extends VairogsTestCase
         $this->assertEquals(expected: $expected, actual: (new Uri())->routeExists(router: $router, route: $route));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\UriDataProvider::dataProviderIsUrl
-     */
+    #[DataProviderExternal(UriDataProvider::class, 'providerIsUrl')]
     public function testIsUrl(string $url, bool $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Uri())->isUrl(url: $url));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\UriDataProvider::dataProviderIsUrl
-     */
+    #[DataProviderExternal(UriDataProvider::class, 'providerIsUrl')]
     public function testIsAbsolute(string $url, bool $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Uri())->isAbsolute(path: $url));

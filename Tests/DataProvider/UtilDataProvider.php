@@ -4,7 +4,7 @@ namespace Vairogs\Functions\Tests\DataProvider;
 
 class UtilDataProvider
 {
-    public static function dataProviderIsPrime(): array
+    public static function providerIsPrime(): array
     {
         return [
             [2,    true,  ],
@@ -22,7 +22,7 @@ class UtilDataProvider
         ];
     }
 
-    public static function dataProviderIsPrimeBelow1000(): array
+    public static function providerIsPrimeBelow1000(): array
     {
         return [
             [2,    true,  ],
@@ -40,7 +40,7 @@ class UtilDataProvider
         ];
     }
 
-    public static function dataProviderDistanceBetweenPoints(): array
+    public static function providerDistanceBetweenPoints(): array
     {
         return [
             [56.95633943847958, 24.197759089350726, 56.95457297448779, 24.200456656517165, true, 0.2556, ],

@@ -4,7 +4,7 @@ namespace Vairogs\Functions\Tests\DataProvider;
 
 class CyrillicDataProvider
 {
-    public static function dataProviderCyrillicToLatin(): array
+    public static function providerCyrillicToLatin(): array
     {
         return [
             ['юнит-тест', 'yunit-tyest', ],
@@ -12,7 +12,7 @@ class CyrillicDataProvider
         ];
     }
 
-    public static function dataProviderLatinToCyrillic(): array
+    public static function providerLatinToCyrillic(): array
     {
         return [
             ['yunit-tyest', 'юнит-тест', ],
@@ -20,7 +20,7 @@ class CyrillicDataProvider
         ];
     }
 
-    public static function dataProviderGetCountryName(): array
+    public static function providerGetCountryName(): array
     {
         return [
             ['LV', 'en', 'Latvia', ],

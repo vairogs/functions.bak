@@ -2,14 +2,14 @@
 
 namespace Vairogs\Functions\Tests;
 
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\Sort;
+use Vairogs\Functions\Tests\DataProvider\SortDataProvider;
 
 class SortTest extends VairogsTestCase
 {
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\SortDataProvider::dataProviderSwap
-     */
+    #[DataProviderExternal(SortDataProvider::class, 'providerSwap')]
     public function testSwap(int $a, int $b): void
     {
         $value = [$b, $a, ];
@@ -17,9 +17,7 @@ class SortTest extends VairogsTestCase
         $this->assertEquals(expected: $value, actual: [$a, $b]);
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\SortDataProvider::dataProviderSwap
-     */
+    #[DataProviderExternal(SortDataProvider::class, 'providerSwap')]
     public function testSwapArray(int $a, int $b): void
     {
         $expected = [$a, $b, ];
@@ -28,18 +26,14 @@ class SortTest extends VairogsTestCase
         $this->assertEquals(expected: $expected, actual: $actual);
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\SortDataProvider::dataProviderBubbleSort
-     */
+    #[DataProviderExternal(SortDataProvider::class, 'providerBubbleSort')]
     public function testBubbleSort(array $unsorted, array $sorted): void
     {
         (new Sort())->bubbleSort(array: $unsorted);
         $this->assertEquals(expected: $sorted, actual: $unsorted);
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\SortDataProvider::dataProviderBubbleSort
-     */
+    #[DataProviderExternal(SortDataProvider::class, 'providerBubbleSort')]
     public function testMergeSort(array $unsorted, array $sorted): void
     {
         $this->assertEquals(expected: $sorted, actual: (new Sort())->mergeSort(array: $unsorted));

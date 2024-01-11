@@ -7,7 +7,7 @@ use Vairogs\Functions\Util;
 
 class FunctionHandlerDataProvider
 {
-    public static function dataProvider(): array
+    public static function provider(): array
     {
         return [
             ['is_string', null, true, 'vairogs', ],

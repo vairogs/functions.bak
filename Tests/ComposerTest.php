@@ -2,8 +2,10 @@
 
 namespace Vairogs\Functions\Tests;
 
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\Composer;
+use Vairogs\Functions\Tests\DataProvider\ComposerDataProvider;
 
 class ComposerTest extends VairogsTestCase
 {
@@ -14,9 +16,7 @@ class ComposerTest extends VairogsTestCase
         $this->assertEquals(expected: 'TEST', actual: (new Composer())->getenv(name: 'TEST'));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\ComposerDataProvider::dataProviderIsInstalled
-     */
+    #[DataProviderExternal(ComposerDataProvider::class, 'providerIsInstalled')]
     public function testIsInstalled(string $package, bool $installed, bool $incDevReq): void
     {
         $this->assertEquals(expected: $installed, actual: (new Composer())->isInstalled(packages: [$package], incDevReq: $incDevReq));

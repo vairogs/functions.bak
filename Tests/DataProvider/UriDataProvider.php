@@ -7,7 +7,7 @@ use Vairogs\Functions\Constants\Http;
 
 class UriDataProvider
 {
-    public static function dataProviderArrayFromQueryString(): array
+    public static function providerArrayFromQueryString(): array
     {
         return [
             ['field1=value1&field2=value2&field3=value3', ['field1' => 'value1', 'field2' => 'value2', 'field3' => 'value3', ], ],
@@ -17,7 +17,7 @@ class UriDataProvider
     }
 
     /** @noinspection HttpUrlsUsage */
-    public static function dataProviderGetSchema(): array
+    public static function providerGetSchema(): array
     {
         return [
             [Definition::IDENT, Http::SCHEMA_HTTPS, ],
@@ -36,7 +36,7 @@ class UriDataProvider
         ];
     }
 
-    public static function dataProviderRouteExists(): array
+    public static function providerRouteExists(): array
     {
         return [
             ['tests_foo', true, ],
@@ -44,7 +44,7 @@ class UriDataProvider
         ];
     }
 
-    public static function dataProviderIsUrl(): array
+    public static function providerIsUrl(): array
     {
         return [
             [Definition::IDENT, true, ],

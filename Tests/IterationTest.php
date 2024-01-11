@@ -4,42 +4,36 @@ namespace Vairogs\Functions\Tests;
 
 use Exception;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Symfony\Component\HttpFoundation\Request;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\Constants\Definition;
 use Vairogs\Functions\Iteration;
 use Vairogs\Functions\Php;
+use Vairogs\Functions\Tests\DataProvider\IterationDataProvider;
 
 class IterationTest extends VairogsTestCase
 {
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IterationDataProvider::dataProviderIsEmpty
-     */
+    #[DataProviderExternal(IterationDataProvider::class, 'providerIsEmpty')]
     public function testIsEmpty(mixed $value, bool $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Iteration())->isEmpty(variable: $value));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IterationDataProvider::dataProviderMakeMultiDimensional
-     */
+    #[DataProviderExternal(IterationDataProvider::class, 'providerMakeMultiDimensional')]
     public function testMakeMultiDimensional(array $input, array $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Iteration())->makeMultiDimensional(array: $input));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IterationDataProvider::dataProviderUniqueMap
-     */
+    #[DataProviderExternal(IterationDataProvider::class, 'providerUniqueMap')]
     public function testUniqueMap(array $input, array $expected): void
     {
         (new Iteration())->uniqueMap(array: $input);
         $this->assertEquals(expected: $expected, actual: $input);
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IterationDataProvider::dataProviderUnique
-     */
+    #[DataProviderExternal(IterationDataProvider::class, 'providerUnique')]
     public function testUnique(array $input, array $expected, bool $keep): void
     {
         $this->assertEquals(expected: $expected, actual: (new Iteration())->unique(input: $input, keepKeys: $keep));
@@ -57,17 +51,13 @@ class IterationTest extends VairogsTestCase
         $this->assertEquals(expected: Request::METHOD_POST, actual: (new Iteration())->filterKeyEndsWith(input: (new Php())->getClassConstants(class: Request::class), endsWith: Request::METHOD_POST)['METHOD_POST'] ?? null);
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IterationDataProvider::dataProviderArrayIntersectKeyRecursive
-     */
+    #[DataProviderExternal(IterationDataProvider::class, 'providerArrayIntersectKeyRecursive')]
     public function testArrayIntersectKeyRecursive(array $input, array $second, array $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Iteration())->arrayIntersectKeyRecursive(first: $input, second: $second));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IterationDataProvider::dataProviderArrayFlipRecursive
-     */
+    #[DataProviderExternal(IterationDataProvider::class, 'providerArrayFlipRecursive')]
     public function testArrayFlipRecursive(array $input, array $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Iteration())->arrayFlipRecursive(input: $input));
@@ -89,9 +79,7 @@ class IterationTest extends VairogsTestCase
         $this->assertEquals(expected: null, actual: (new Iteration())->getFirstMatchAsString(keys: ['AAA'], haystack: $request->server->all()));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IterationDataProvider::dataProviderMakeOneDimension
-     */
+    #[DataProviderExternal(IterationDataProvider::class, 'providerMakeOneDimension')]
     public function testMakeOneDimension(array $input, bool $onlyLast, int $depth, int $maxDepth, array $expected): void
     {
         $this->assertEquals($expected, (new Iteration())->makeOneDimension(array: $input, onlyLast: $onlyLast, depth: $depth, maxDepth: $maxDepth));

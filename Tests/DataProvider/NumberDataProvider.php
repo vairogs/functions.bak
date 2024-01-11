@@ -4,7 +4,7 @@ namespace Vairogs\Functions\Tests\DataProvider;
 
 class NumberDataProvider
 {
-    public static function dataProviderGreatestCommonDivisor(): array
+    public static function providerGreatestCommonDivisor(): array
     {
         return [
             [30, 24, 6, ],
@@ -12,7 +12,7 @@ class NumberDataProvider
         ];
     }
 
-    public static function dataProviderLeastCommonMultiple(): array
+    public static function providerLeastCommonMultiple(): array
     {
         return [
             [12, 15, 60, ],
@@ -20,7 +20,7 @@ class NumberDataProvider
         ];
     }
 
-    public static function dataProviderIsIntFloat(): array
+    public static function providerIsIntFloat(): array
     {
         return [
             [1, true, ],
@@ -30,7 +30,7 @@ class NumberDataProvider
         ];
     }
 
-    public static function dataProviderEncryption(): array
+    public static function providerEncryption(): array
     {
         return [
             ['Vairogs! 盾牌！ Štít', 'testVAIROGS789', ],

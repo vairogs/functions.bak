@@ -2,12 +2,14 @@
 
 namespace Vairogs\Functions\Tests;
 
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use ReflectionException;
 use ReflectionMethod;
 use Symfony\Component\Routing\Route;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\Reflection;
 use Vairogs\Functions\Tests\Assets\Twig\TestFunctions;
+use Vairogs\Functions\Tests\DataProvider\ReflectionDataProvider;
 use Vairogs\Functions\Text;
 
 class ReflectionTest extends VairogsTestCase
@@ -21,9 +23,7 @@ class ReflectionTest extends VairogsTestCase
         $this->assertFalse(condition: (new Reflection())->attributeExists(reflectionMethod: $reflectionMethod, filterClass: Route::class));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\ReflectionDataProvider::dataProviderGetNamespace
-     */
+    #[DataProviderExternal(ReflectionDataProvider::class, 'providerGetNamespace')]
     public function testGetNamespace(string $class, string $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Reflection())->getNamespace(class: $class));

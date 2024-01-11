@@ -5,25 +5,23 @@ namespace Vairogs\Functions\Tests;
 use BadFunctionCallException;
 use DateTime;
 use DateTimeInterface;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\Php;
 use Vairogs\Functions\Tests\Assets\Model\Entity;
 use Vairogs\Functions\Tests\Assets\Model\Entity1;
+use Vairogs\Functions\Tests\DataProvider\PhpDataProvider;
 use Vairogs\Functions\Text;
 
 class PhpTest extends VairogsTestCase
 {
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\PhpDataProvider::dataProviderBoolval
-     */
+    #[DataProviderExternal(PhpDataProvider::class, 'providerBoolval')]
     public function testBoolval(mixed $value, bool $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Php())->boolval(value: $value));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\PhpDataProvider::dataProviderGetterSetter
-     */
+    #[DataProviderExternal(PhpDataProvider::class, 'providerGetterSetter')]
     public function testGetterSetter(string $variable, string $expGetter, string $expSetter): void
     {
         $this->assertEquals(expected: $expGetter, actual: (new Php())->getter(variable: $variable));

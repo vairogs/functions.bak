@@ -2,14 +2,14 @@
 
 namespace Vairogs\Functions\Tests;
 
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\SortLatvian;
+use Vairogs\Functions\Tests\DataProvider\SortLatvianDataProvider;
 
 class SortLatvianTest extends VairogsTestCase
 {
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\SortLatvianDataProvider::dataProviderSortLatvian
-     */
+    #[DataProviderExternal(SortLatvianDataProvider::class, 'providerSortLatvian')]
     public function testSortLatvian(array|object $unsorted, string|int $field, array|object $sorted): void
     {
         (new SortLatvian())->sortLatvian(names: $unsorted, field: $field);

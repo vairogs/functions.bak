@@ -2,38 +2,32 @@
 
 namespace Vairogs\Functions\Tests;
 
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\Number;
+use Vairogs\Functions\Tests\DataProvider\NumberDataProvider;
 
 class NumberTest extends VairogsTestCase
 {
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\NumberDataProvider::dataProviderIsIntFloat
-     */
+    #[DataProviderExternal(NumberDataProvider::class, 'providerIsIntFloat')]
     public function testIsInt(int|float $number, bool $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Number())->isInt(value: $number));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\NumberDataProvider::dataProviderIsIntFloat
-     */
+    #[DataProviderExternal(NumberDataProvider::class, 'providerIsIntFloat')]
     public function testIsFloat(int|float $number, bool $expected): void
     {
         $this->assertEquals(expected: !$expected, actual: (new Number())->isFloat(value: $number));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\NumberDataProvider::dataProviderGreatestCommonDivisor
-     */
+    #[DataProviderExternal(NumberDataProvider::class, 'providerGreatestCommonDivisor')]
     public function testGreatestCommonDivisor(int $x, int $y, int $expected): void
     {
-        $this->assertEquals(expected: $expected, actual: (new Number())->greatestCommonDivisor(fisrt: $x, second: $y));
+        $this->assertEquals(expected: $expected, actual: (new Number())->greatestCommonDivisor(first: $x, second: $y));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\NumberDataProvider::dataProviderLeastCommonMultiple
-     */
+    #[DataProviderExternal(NumberDataProvider::class, 'providerLeastCommonMultiple')]
     public function testLeastCommonMultiple(int $x, int $y, int $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Number())->leastCommonMultiple(first: $x, second: $y));

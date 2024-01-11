@@ -2,30 +2,26 @@
 
 namespace Vairogs\Functions\Tests;
 
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Vairogs\Core\Tests\VairogsTestCase;
+use Vairogs\Functions\Tests\DataProvider\ValidateDataProvider;
 use Vairogs\Functions\Validate;
 
 class ValidateTest extends VairogsTestCase
 {
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\ValidateDataProvider::dataProviderValidateEmail
-     */
+    #[DataProviderExternal(ValidateDataProvider::class, 'providerValidateEmail')]
     public function testValidateEmail(string $email, bool $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Validate())->validateEmail(email: $email));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\ValidateDataProvider::dataProviderValidateIP
-     */
+    #[DataProviderExternal(ValidateDataProvider::class, 'providerValidateIP')]
     public function testValidateIP(string $ip, bool $deny, bool $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Validate())->validateIPAddress(ipAddress: $ip, deny: $deny));
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\ValidateDataProvider::dataProviderValidateCIDR
-     */
+    #[DataProviderExternal(ValidateDataProvider::class, 'providerValidateCIDR')]
     public function testValidateCIDR(string $cidr, bool $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Validate())->validateCIDR(cidr: $cidr));

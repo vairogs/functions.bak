@@ -4,7 +4,7 @@ namespace Vairogs\Functions\Tests\DataProvider;
 
 class ValidateDataProvider
 {
-    public static function dataProviderValidateEmail(): array
+    public static function providerValidateEmail(): array
     {
         return [
             ['vairogs@vairogs.com',  true, ],
@@ -15,7 +15,7 @@ class ValidateDataProvider
         ];
     }
 
-    public static function dataProviderValidateIP(): array
+    public static function providerValidateIP(): array
     {
         return [
             ['127.0.0.1', false, true, ],
@@ -27,7 +27,7 @@ class ValidateDataProvider
         ];
     }
 
-    public static function dataProviderValidateCIDR(): array
+    public static function providerValidateCIDR(): array
     {
         return [
             ['10.0.0.0/24', true, ],

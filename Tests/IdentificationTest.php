@@ -3,16 +3,16 @@
 namespace Vairogs\Functions\Tests;
 
 use DivisionByZeroError;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Throwable;
 use Vairogs\Core\Tests\VairogsTestCase;
 use Vairogs\Functions\Identification;
+use Vairogs\Functions\Tests\DataProvider\IdentificationDataProvider;
 use ValueError;
 
 class IdentificationTest extends VairogsTestCase
 {
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IdentificationDataProvider::dataProviderValidatePersonCode
-     */
+    #[DataProviderExternal(IdentificationDataProvider::class, 'providerValidatePersonCode')]
     public function testValidatePersonCode(string $personCode, bool $expected): void
     {
         $this->assertEquals(expected: $expected, actual: (new Identification())->validatePersonCode(personCode: $personCode));
@@ -35,15 +35,13 @@ class IdentificationTest extends VairogsTestCase
         }
     }
 
-    /**
-     * @dataProvider \Vairogs\Functions\Tests\DataProvider\IdentificationDataProvider::dataProviderHash
-     */
+    #[DataProviderExternal(IdentificationDataProvider::class, 'providerHash')]
     public function testHash(string $first, bool $equals, string $second): void
     {
         if ($equals) {
-            $this->assertEquals(expected: (new Identification())->getHash(text: $first), actual: (new Identification())->getHash(text: $second));
+            $this->assertEquals(expected: (new Identification())->getSha(text: $first), actual: (new Identification())->getSha(text: $second));
         } else {
-            $this->assertNotEquals(expected: (new Identification())->getHash(text: $first), actual: (new Identification())->getHash(text: $second));
+            $this->assertNotEquals(expected: (new Identification())->getSha(text: $first), actual: (new Identification())->getSha(text: $second));
         }
     }
 }
