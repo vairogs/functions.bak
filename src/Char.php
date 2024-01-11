@@ -25,17 +25,17 @@ final class Char
         $string = preg_replace(pattern: [
             '#([A-Z\d]+)([A-Z][a-z])#',
             '#([a-z\d])([A-Z])#',
-        ], replacement: '\1_\2', subject: $skipCamel ? $string : $this->toCamelCaseLCFisrt(string: $string));
+        ], replacement: '\1_\2', subject: $skipCamel ? $string : $this->toCamelCaseLCFirst(string: $string));
 
         return strtolower(string: str_replace(search: '-', replace: '_', subject: (string) $string));
     }
 
-    public function toCamelCaseLCFisrt(string $string): string
+    public function toCamelCaseLCFirst(string $string): string
     {
         return (string) preg_replace(pattern: '#\s+#', replacement: '', subject: lcfirst(string: ucwords(string: strtolower(string: str_replace(search: '_', replace: ' ', subject: $string)))));
     }
 
-    public function toCamelCaseLCFisrtUCFirst(string $string): string
+    public function toCamelCaseLCFirstUCFirst(string $string): string
     {
         return (string) preg_replace(pattern: '#\s+#', replacement: '', subject: ucfirst(string: ucwords(string: strtolower(string: str_replace(search: '_', replace: ' ', subject: $string)))));
     }

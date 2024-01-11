@@ -16,17 +16,17 @@ final class Number
         return is_numeric(value: $value) && !ctype_digit(text: (string) $value);
     }
 
-    public function greatestCommonDivisor(int $fisrt, int $second): int
+    public function greatestCommonDivisor(int $first, int $second): int
     {
         if (0 === $second) {
-            return $fisrt;
+            return $first;
         }
 
-        return $this->greatestCommonDivisor(fisrt: $second, second: $fisrt % $second);
+        return $this->greatestCommonDivisor(first: $second, second: $first % $second);
     }
 
     public function leastCommonMultiple(int $first, int $second): int
     {
-        return (int) ($first * $second / $this->greatestCommonDivisor(fisrt: $first, second: $second));
+        return (int) ($first * $second / $this->greatestCommonDivisor(first: $first, second: $second));
     }
 }

@@ -60,7 +60,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Vairogs\\Functions\\": ""
+            "Vairogs\\Functions\\": "src/"
         }
     },
     "autoload-dev": {
