@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    backupGlobals="false"
     bootstrap="vendor/autoload.php"
     cacheResult="false"
     colors="true"
@@ -15,14 +14,13 @@
         <env name="ENVIRONMENT" value="test"/>
         <env name="KERNEL_CLASS" value="Vairogs\Core\Tests\TestKernel"/>
         <env name="SHELL_VERBOSITY" value="-1"/>
-        <env name="SYMFONY_PHPUNIT_VERSION" value="10"/>
         <ini name="error_reporting" value="-1"/>
         <ini name="memory_limit" value="-1"/>
         <server name="APP_ENV" value="test" force="true"/>
     </php>
     <testsuites>
         <testsuite name="Vairogs Test Suite: Functions">
-            <directory>./Tests/</directory>
+            <directory>./tests/</directory>
         </testsuite>
     </testsuites>
     <coverage>
